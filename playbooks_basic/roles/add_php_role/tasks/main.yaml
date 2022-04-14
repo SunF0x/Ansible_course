@@ -1,0 +1,8 @@
+---
+- name: Add index.php
+  shell: "cd /var/www/html/ | sudo touch index.php"
+  become: yes
+
+- name: Add phpinfo()
+  shell: "sudo echo '<?php phpinfo(); ?>' > /var/www/html/index.php"
+  become: yes

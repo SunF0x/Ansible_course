@@ -1,0 +1,18 @@
+---
+- name: Package for php
+  shell: "wget http://rpms.remirepo.net/enterprise/remi-release-7.rpm"
+  
+- name: Chose php version
+  shell: "sudo yum-config-manager --enable remi-php{{php_version}}"
+  become: yes
+
+- name: Update
+  shell: "sudo yum update"
+  become: yes
+
+- name: Test php version
+  shell: "php -v"
+
+- name: Restart Apache
+  shell: "sudo systemctl restart httpd"
+  become: yes

@@ -1,0 +1,8 @@
+---
+- name: Test of work
+  command: "curl http://{{ansible_default_ipv4.address}}/index.php"
+  register: returt_curl
+
+- name: Show test work
+  debug:
+    msg: "all_ok"

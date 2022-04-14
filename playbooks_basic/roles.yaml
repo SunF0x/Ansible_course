@@ -1,0 +1,17 @@
+---
+- name: Start roles
+  hosts: all
+  tasks:
+    - name: Start Apache
+      include_role:
+        name: start_role
+    - name: Change php
+      include_role:
+        name: change_php_role
+      when: ansible_os_family=="RedHat"
+    - name: Add php file
+      include_role:
+        name: add_php_role
+    - name: Final test
+      include_role:
+        name: test_service_role

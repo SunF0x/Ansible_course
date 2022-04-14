@@ -1,0 +1,19 @@
+---
+- name: Apache to RedHat
+  shell: "sudo yum install -y {{ item }}"
+  become: yes
+  loop:
+   - httpd
+   - php
+   - epel-release
+   - yum-utils
+  when: ansible_os_family=="RedHat"
+
+- name: Apache to Debian
+  shell: "sudo apt install apache2"
+  when: ansible_os_family=="Debian"
+
+- name: Start Apache
+  shell: "sudo systemctl start httpd"
+  become: yes
+  when: ansible_os_family=="RedHat"
