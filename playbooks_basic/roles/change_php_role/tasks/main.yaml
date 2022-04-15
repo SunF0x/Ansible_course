@@ -1,14 +1,19 @@
 ---
 - name: Package for php
-  shell: "wget http://rpms.remirepo.net/enterprise/remi-release-7.rpm"
+  shell: "sudo yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm"
+  become: yes
   
 - name: Chose php version
   shell: "sudo yum-config-manager --enable remi-php{{php_version}}"
   become: yes
 
-- name: Update
-  shell: "sudo yum update"
+- name: Install php
+  shell: "sudo yum install -y php"
   become: yes
+
+#- name: Update
+#  shell: "sudo yum update"
+#  become: yes
 
 - name: Test php version
   shell: "php -v"
