@@ -2,7 +2,6 @@
 #- name: Package for php
 #  shell: "sudo yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm"
 #  become: yes
-  
 - name: Chose php version
   shell: "sudo yum-config-manager --enable remi-php{{php_version}}"
   become: yes
